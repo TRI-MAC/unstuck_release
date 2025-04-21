@@ -1,0 +1,81 @@
+r_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/polymer-themes/ice.html">
+<link rel="import" href="../bower_components/paper-radio-group/paper-radio-group.html">
+<link rel="import" href="../bower_components/paper-radio-button/paper-radio-button.html">
+<link rel="import" href="../bower_components/paper-checkbox/paper-checkbox.html">
+
+
+<dom-module id="difficulty-selector-4-hso">
+  <template>
+    <style>
+       :host {
+        display: block;
+        width: 100%;
+        height: 100%;
+        --paper-radio-button-label-color: white;
+        --paper-radio-button: {
+          color: white;
+        };
+      }
+
+      .title {
+        font-family: Verdana, Geneva, Tahoma, "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+        font-size: 30px;
+        padding-top: 5%;
+        text-align: center;
+        font-weight: 400;
+        /*text-shadow: 1px 1px 2px #346da3; */
+      }
+
+      .radiobuttons {
+        padding: 15% 0% 15% 20%;
+        font-size: 20px;
+        color: white;
+        text-align: left;
+      }
+
+      .radiobutton {
+        color: white;
+      }
+
+      .subtext {
+        font-size: 20px;
+        padding-top: 2%;
+        font-family: Verdana, Geneva, Tahoma, "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+      }
+
+      .papercard {
+        margin-top: 4%;
+        border-radius: 30px;
+        min-width: 20%;
+        width: 20%;
+        margin-bottom: 5%;
+        overflow: auto
+      }
+    </style>
+
+    <div class="title">Which of these sites can we use for interventions?</div>
+    <div class="subtext">Uncheck those for which you don't have an account or those you wouldn't want to visit.</div>
+
+    <paper-card class="papercard">
+      <!--<paper-radio-group on-selected-changed="selectedNudgechanged" class="radiobuttons" id="difficultyradiogroup">-->
+      <div class="radiobuttons" on-change="selectedNudgechanged" attr-for-selected="value" id="accepted_sites_boxes">
+        <paper-checkbox checked name="button1" on-keydown="ignore_keydown" class="radiobutton" value="facebook"><strong>Facebook</strong></paper-checkbox><br>
+        <paper-checkbox checked name="button2" on-keydown="ignore_keydown" class="radiobutton" value="instagram"><strong>Instagram</strong></paper-checkbox><br>
+        <paper-checkbox checked name="button3" on-keydown="ignore_keydown" class="radiobutton" value="youtube"><strong>Youtube</strong></paper-checkbox><br>
+        <paper-checkbox checked name="button4" on-keydown="ignore_keydown" class="radiobutton" value="yelp"><strong>Yelp</strong></paper-checkbox><br>
+        <paper-checkbox checked name="button5" on-keydown="ignore_keydown" class="radiobutton" value="reddit"><strong>Reddit</strong></paper-checkbox><br>
+        <paper-checkbox checked name="button6" on-keydown="ignore_keydown" class="radiobutton" value="amazon"><strong>Amazon</strong></paper-checkbox><br>
+        <paper-checkbox checked name="button7" on-keydown="ignore_keydown" class="radiobutton" value="twitter"><strong>Twitter</strong></paper-checkbox><br>
+        <paper-checkbox checked name="button8" on-keydown="ignore_keydown" class="radiobutton" value="slack"><strong>Slack</strong></paper-checkbox><br>
+        <paper-checkbox checked name="button9" on-keydown="ignore_keydown" class="radiobutton" value="pinterest"><strong>Pinterest</strong></paper-checkbox><br>
+        <paper-checkbox checked name="button10" on-keydown="ignore_keydown" class="radiobutton" value="netflix"><strong>Netflix</strong></paper-checkbox><br>
+        <paper-checkbox checked name="button11" on-keydown="ignore_keydown" class="radiobutton" value="spotify"><strong>Spotify</strong></paper-checkbox><br>
+      </div>
+      <!--</paper-radio-group>-->
+    </paper-card>
+
+
+  </template>
+  <script src="difficulty-selector-4-hso.js"></script>
+</dom-module>

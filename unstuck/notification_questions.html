@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Unstuck Questions</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+  <link rel="icon" href="icons/HSO_icons/logo.svg" type="image/x-icon">
+  
+
+</head>
+
+<body id="index_body" style='margin: auto; text-align: center; color: white; background-color: #177FB0; font-family: Verdana, Geneva, Tahoma, "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;'>
+  <!--<options-view-v2 id="options_view" have_options_page_hash></options-view-v2>-->
+  <custom-style>
+    <style is="custom-style">
+      :host {
+        width: 100vw;
+        height: 100vh;
+
+        --paper-card: {
+
+          display: block;
+        };
+      }
+
+      .popup_view_outer_div {
+        width:100vw;
+        height:90vh;
+      }
+
+      .flexcontainer {
+        display: flex;
+        justify-content: flex-end;
+      }
+
+      .box {
+        margin-left: 20%;
+        margin-right: 20%;
+        margin-top: 2%;
+        border-style: none;
+        border-color: #65A7F2;
+      }
+      .pageTitle {
+        display: inline; 
+        vertical-align: middle; 
+        font-size: 3em;
+        font-weight:700;
+        margin-top: 5%;
+      }
+      .pageSubtitle {
+        display: none;
+        vertical-align: middle;
+        font-size:18px;
+        font-weight:600;
+      }
+      .pageInstructions {
+        
+        font-size: 1.5em;
+        text-align: center;
+        margin-top: 2%;
+      }
+
+      .questions-box {
+        width: 100%;
+        margin-top: 5%;
+      }
+      .questionsText {
+        font-size: 20px; 
+        text-align: left
+      }
+
+      .title {
+        font-family: Verdana, Geneva, Tahoma, "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+        padding-left:0.3em;
+        padding-bottom: 0.5em;
+        padding-top: 0.5em;
+      }
+
+      .title-box {
+        font-family: Verdana, Geneva, Tahoma, "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+        margin-top: 2%;
+      }
+
+      /* Flexbox */
+      .interventionContainer {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 0.3em;
+        padding-bottom: 0.3em;
+        padding-left: 0.3em;
+
+        font-family: Verdana, Geneva, Tahoma, "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+        margin: 0.3em;
+        margin-top: 0.5em;
+        font-size: 12px;
+      }
+
+      /* Flexbox */
+      .goalsContainer {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 0.3em;
+        padding-bottom: 0.3em;
+        padding-left: 0.3em;
+
+        font-family: Verdana, Geneva, Tahoma, "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+        margin: 0.3em;
+        margin-top: 0.5em;
+        font-size: 12px;
+      }
+
+      #enabledInterventions {
+        padding-top: 0.3em;
+        padding-bottom: 0.3em;
+        padding-left: 0.3em;
+
+        font-family: Verdana, Geneva, Tahoma, "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+        margin: 0.3em;
+        margin-top: 0.5em;
+        font-size: 12px;
+      }
+
+      .interventionName {
+        margin-left: 10px;
+      }
+
+      .feedbackcontents {
+        margin: 5px;
+      }
+
+      .paperbuttons {
+        margin:auto;
+        --paper-button: {
+          color: white;
+          background-color: white;
+        };
+
+        --paper-button-flat-keyboard-focus: {
+          font-weight: normal;
+        };
+
+        --paper-button-raised-keyboard-focus: {
+          font-weight: normal;
+        };
+      }
+
+      #settingsPage {
+        max-width: 400px;
+        font-size: 12px;
+      }
+
+      .iview {
+        padding-top: 5px;
+      }
+
+      #survey_button {
+        display: none;
+        width: 100%;
+        margin-left: 0;
+        color: white;
+        font-weight: bold;
+        background-color: red;
+        disabled: true;
+        text-align: center;
+      }
+
+      [type=radio] {
+        position: absolute;
+        opacity: 0;
+        width: 0;
+        height: 0;
+      }
+
+      [type=radio] + img {
+        cursor: pointer;
+        margin: 5px 5px 5px 5px;
+      }
+
+      .meter {
+        text-align: center;
+        width: 30%;
+        padding-top: 2%
+      }
+
+      .meter_button {
+        display: inline-block
+      }
+      
+      .meter_button_number {
+        font-weight:700; 
+        margin-top: 1%;
+        margin-bottom: 1%;
+      }
+
+      .meter_box {
+        display:flex;
+        justify-content: space-between;
+        margin: auto;
+        font-weight: bold;
+        width: 70%;
+      }
+
+      .meter_text_right {
+        display: inline-block;
+        margin: auto;
+        font-size: 12px;
+        text-align: center;
+        vertical-align: middle;
+        flex-grow: 1;
+        flex-basis: 0;
+      }
+
+      .meter_text_left {
+        display: inline-block;
+        font-size: 12px;
+        text-align: center;
+        margin: auto;
+        vertical-align: middle;
+        flex-grow: 1;
+        flex-basis: 0;
+      }
+
+      #brown_button [type=radio]:checked + img {
+        content: url("./icons/HSO_icons/circle_brown_check.png");
+      }
+
+      #green_button [type=radio]:checked + img {
+        content: url("./icons/HSO_icons/circle_green_check.png");
+      }
+      #gray_button [type=radio]:checked + img {
+        content: url("./icons/HSO_icons/circle_gray_check.png");
+      }
+
+      #pos_button [type=radio]:checked + img {
+        content: url("./icons/HSO_icons/green_plus.png");
+      }
+
+      #neg_button [type=radio]:checked + img {
+        content: url("./icons/HSO_icons/red_x.png");
+      }
+
+      #neutral_button [type=radio]:checked + img {
+        content: url("./icons/HSO_icons/gray_minus.png");
+      }
+
+      .submit_button {
+        display: auto ;
+        color: white;
+        background-color:#024961;
+        border-radius: 1%;
+        text-align: center;
+        padding: 1%;
+        padding-left: 5%;
+        padding-right: 5%;
+        height: 5%;
+        width: 30%;
+        z-index: 1;
+        --paper-button: {
+          color: white;
+        };
+      }
+
+      .intervention_panel{
+        width: 100vw;
+        height: 100vh;
+      }
+
+      /* Tooltip container */
+      .tooltip {
+        position: relative;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+      }
+
+      /* Tooltip text */
+      .tooltip .tooltiptext {
+        text-overflow: ellipsis;
+        visibility: hidden;
+        width: 100%;
+        background-color: black;
+        color: #fff;
+        text-align: center;
+        padding: 5px 5px 2px 5px;
+        border-radius: 5px;
+        bottom: -90%;
+        left: 0%;
+        margin-left: 0px; /* Use half of the width (120/2 = 60), to center the tooltip */
+        /* Position the tooltip text - see examples below! */
+        position: absolute;
+        z-index: 99;
+      }
+
+      /* Show the tooltip text when you mouse over the tooltip container */
+      .tooltip:hover .tooltiptext {
+        visibility: visible;
+        transition: 1s all ease;
+        transition-delay: 1s;
+      }
+
+
+      .meter {
+          vertical-align: center;
+          justify-content: space-evenly;
+          display: flex;
+          width: 60%;
+        }
+
+        .meter_button {
+          display: inline-block;
+          margin-top: 2%;
+          align-items: center;
+        }
+        #meter_input {
+          width: 1.5em;
+          height: 1.5em;
+        }
+        
+        .meter_button_number {
+          font-size: 1em;
+          font-weight: normal; 
+          margin-top: 1%;
+          margin-bottom: 1%;
+          text-align: center
+        }
+        .meter_button_text {
+          font-weight: normal;
+          text-align: center;
+          font-size: 1em;
+          width: 100%;
+          margin: auto;
+          margin-top: 5%;
+        }
+
+        .meter_box {
+          display: flex;
+          justify-content: space-between;
+          font-weight: bold;
+          margin: auto;
+          width: 50%;
+          font-size: 1vw;
+          margin-bottom: 5%;
+        }
+
+        .meter_question_divider {
+        width: 40%;
+        display: flex;
+        height: 1px;
+        border: 0;
+        border-top: 1px solid #ccc;
+        margin: 30%;
+        padding: 30%;
+      }
+
+      .task_meter_box {
+        display:inline-block;
+        font-weight: bold;
+        margin: auto;
+        width: 70%;
+        align-content: center;
+        margin-left: 40vw;
+      }
+
+      .meter_text_right {
+        display: inline-block;
+        font-size: .8vw;
+        text-align: left;
+        margin: auto;
+        vertical-align: middle;
+        flex-grow: 1;
+        flex-basis: 0;
+        font-weight: normal;
+      }
+
+      .meter_text_left {
+        display: inline-block;
+        font-size: .8vw;
+        text-align: right;
+        margin: auto;
+        vertical-align: middle;
+        flex-grow: 1;
+        flex-basis: 0;
+        font-weight: normal;
+      }
+
+      .question-text {
+        margin-left: 10%;
+        font-size: 1.5em; 
+        text-align: left;
+        font-weight: bold;
+      }
+
+
+    </style>
+  </custom-style>
+  <div class="popup_view_outer_div">
+
+  <div class="box">
+  <paper-card class="intervention_panel">
+    <div class="title-box">
+      <div>
+        <div class="pageTitle">Unstuck Study Survey</div>
+      </div>
+
+      <div>
+        <div class="pageSubtitle"></div>
+        <p class="pageInstructions"> Please answer the following questions and click the submit button below.
+      </div>
+    </div>
+
+        <div class="questions-box">
+          <div class="question-text">
+            <div>1. How <b>stressed</b> are you feeling right now?</div>
+          </div>
+
+          <div class="meter_box">
+            <p class="meter_text_left">Not Stressed<br>At All</p>
+            <div class="meter" id="stress_meter" align="center" style="margin-top: 1%">
+              <label class="meter_button" id="gray_button">
+                <input type="radio" name="stress_level" value=1>
+                <img id="meter_input" src="../icons/HSO_icons/circle_gray.png"/>
+                <p class="meter_button_number" >1</p>
+              </label>
+              <label class="meter_button" id="gray_button">
+              <input type="radio" name="stress_level" value=2>
+              <img id="meter_input" src="../icons/HSO_icons/circle_gray.png"/>
+              <p class="meter_button_number" >2</p>
+              </label>
+              <label class="meter_button" id="gray_button">
+              <input type="radio" name="stress_level" value=3>
+              <img id="meter_input" src="../icons/HSO_icons/circle_gray.png"/>
+              <p class="meter_button_number">3</p>
+              </label>
+              <label class="meter_button" id="gray_button">
+              <input type="radio" name="stress_level" value=4>
+              <img id="meter_input" src="../icons/HSO_icons/circle_gray.png"/>
+              <p class="meter_button_number" >4</p>
+              </label>
+              <label class="meter_button" id="gray_button">
+              <input type="radio"  name="stress_level" value=5>
+              <img id="meter_input" src="../icons/HSO_icons/circle_gray.png"/>
+              <p class="meter_button_number">5</p>
+              </label>
+          </div>
+            <p class="meter_text_right">Very<br>Stressed</p>
+          </div>
+          <hr style="display: none; width: 85%; margin-top: 2%">
+
+          <div class="question-text">
+            <div >2. What is your current <b>perceived creativity</b>?</div>
+          </div>
+
+          <div class="meter_box">
+            <p class="meter_text_left">I Am Stuck</p>
+            <div class="meter" id="stuck_meter" align="center" style="margin-top: 1%">
+              <label class="meter_button" id="gray_button">
+              <input type="radio" name="stuck_level" value=1>
+              <img id="meter_input" src="../icons/HSO_icons/circle_gray.png" />
+              <p class="meter_button_number" >1</p>
+              </label>
+              <label class="meter_button" id="gray_button">
+              <input type="radio" name="stuck_level" value=2>
+              <img id="meter_input" src="../icons/HSO_icons/circle_gray.png" />
+              <p class="meter_button_number" >2</p>
+              </label>
+              <label class="meter_button" id="gray_button">
+              <input type="radio" name="stuck_level" value=3>
+              <img id="meter_input" src="../icons/HSO_icons/circle_gray.png"/>
+              <p class="meter_button_number" >3</p>
+              </label>
+              <label class="meter_button" id="gray_button">
+              <input type="radio" name="stuck_level" value=4>
+              <img id="meter_input" src="../icons/HSO_icons/circle_gray.png" />
+              <p class="meter_button_number" >4</p>
+              </label>
+              <label class="meter_button" id="gray_button">
+              <input type="radio"  name="stuck_level" value=5>
+              <img id="meter_input" src="../icons/HSO_icons/circle_gray.png" />
+              <p class="meter_button_number" >5</p>
+              </label>
+          </div>
+            <p class="meter_text_right">I Am In A <br> State of Flow</p>
+          </div>
+
+          <hr style="display: none; width: 85%; margin-top: 2%">
+
+          <div class="question-text">
+            <div>3. How <b>motivated</b> are you (with your current work)?</div>
+          </div>
+
+          <div class="meter_box">
+            <p class="meter_text_left">Not Interested<br>At All</p>
+            <div class="meter" id="motivation_meter" text-align="center" style="margin-top: 1%">
+              <label class="meter_button" id="gray_button">
+                <input type="radio" name="motivation_level" value=1>
+                <img id="meter_input" src="../icons/HSO_icons/circle_gray.png"/>
+                <p class="meter_button_number" >1</p>
+              </label>
+              <label class="meter_button" id="gray_button">
+              <input type="radio" name="motivation_level" value=2>
+              <img id="meter_input" src="../icons/HSO_icons/circle_gray.png"/>
+              <p class="meter_button_number" >2</p>
+              </label>
+              <label class="meter_button" id="gray_button">
+              <input type="radio" name="motivation_level" value=3>
+              <img id="meter_input" src="../icons/HSO_icons/circle_gray.png"/>
+              <p class="meter_button_number" >3</p>
+              </label>
+              <label class="meter_button" id="gray_button">
+              <input type="radio" name="motivation_level" value=4>
+              <img id="meter_input" src="../icons/HSO_icons/circle_gray.png"/>
+              <p class="meter_button_number" >4</p>
+              </label>
+              <label class="meter_button" id="gray_button">
+              <input type="radio"  name="motivation_level" value=5>
+              <img id="meter_input" src="../icons/HSO_icons/circle_gray.png"/>
+              <p class="meter_button_number" >5</p>
+              </label>
+          </div>
+            <p class="meter_text_right">Very Engaged<br>/Interested</p>
+          </div>
+
+          <hr style="display: none; width: 85%; margin-top: 2%">
+
+          <div class="question-text">
+            <div >4. How <b>focused</b> do you feel right now?</div>
+          </div>
+
+          <div class="meter_box">
+            <p class="meter_text_left">Very Distracted</p>
+            <div class="meter" id="focus_meter" text-align="center" style="margin-top: 1%">
+              <label class="meter_button" id="gray_button">
+                <input type="radio" name="focus_level" value=1>
+                <img id="meter_input" src="../icons/HSO_icons/circle_gray.png"/>
+                <p class="meter_button_number" >1</p>
+              </label>
+              <label class="meter_button" id="gray_button">
+              <input type="radio" name="focus_level" value=2>
+              <img id="meter_input" src="../icons/HSO_icons/circle_gray.png"/>
+              <p class="meter_button_number">2</p>
+              </label>
+              <label class="meter_button" id="gray_button">
+              <input type="radio" name="focus_level" value=3>
+              <img id="meter_input" src="../icons/HSO_icons/circle_gray.png"/>
+              <p class="meter_button_number" >3</p>
+              </label>
+              <label class="meter_button" id="gray_button">
+              <input type="radio" name="focus_level" value=4>
+              <img id="meter_input" src="../icons/HSO_icons/circle_gray.png"/>
+              <p class="meter_button_number" >4</p>
+              </label>
+              <label class="meter_button" id="gray_button">
+              <input type="radio"  name="focus_level" value=5>
+              <img id="meter_input" src="../icons/HSO_icons/circle_gray.png"/>
+              <p class="meter_button_number" >5</p>
+              </label>
+          </div>
+          <p class="meter_text_right">Very <br> Focused</p>
+          </div>
+
+          <hr style="display: none; width: 85%; margin-top: 2%">
+
+          <!--
+          <div class="question-text">
+            <div style="">5. What <b>task</b> are you working on?</div>
+          </div>
+          <div class="custom-select">
+            <select id="task_before">
+              <option selected disabled>Select:</option>
+              <option value="Design - Ideation">Design - Ideation</option>
+              <option value="Design - Iteration">Design - Iteration</option>
+              <option value="Design - Packaging / Finalizing">Design - Packaging / Finalizing</option>
+              <option value="Clerical - presentation, report, writing emails, etc.">Clerical - presentation, report, writing emails, etc.</option>
+              <option value="Meeting">Meeting</option>
+              <option value="Art - Sketching, Other">Art - Sketching, Other</option>
+              <option value="Technical - Coding, Other">Technical - Coding, Other</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+        
+
+          <paper-button id="continue_button" class="stressIntervention_button" style="font-weight: bold; color:white;" raised on-click="record_metrics_before">Continue</paper-button>
+        -->
+
+        <button type="submit" class="submit_button" id="submit_button_id" style="font-weight: bold; color:white;" raised>Submit</button>
+
+    </div>
+</div>
+
+
+  </paper-card>
+    </div>
+  <script type="module" src="notification_questions.js"></script>
+</body>
+</html>
