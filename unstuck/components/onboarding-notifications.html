@@ -1,0 +1,196 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/polymer-themes/ice.html">
+<link rel="import" href="../bower_components/paper-radio-group/paper-radio-group.html">
+<link rel="import" href="../bower_components/paper-radio-button/paper-radio-button.html">
+
+<dom-module id="onboarding-notifications">
+  <template>
+    <style>
+       :host {
+        display: block;
+        width: 100vw;
+        height: 100vh;
+        --paper-radio-button-label-color: white;
+        --paper-radio-button: {
+          color: white;
+        };
+      }
+
+      .title {
+        font-family: Verdana, Geneva, Tahoma, "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+        font-size: 2em;
+        text-align: left;
+        font-weight: 400;
+        display: block;
+        /*text-shadow: 1px 1px 2px #346da3; */
+      }
+
+      .subtitle {
+        font-family: Verdana, Geneva, Tahoma, "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+        font-size: 2em;
+        text-align: left;
+        font-weight: 400;
+        display: block;
+        margin-top: 2%;
+      }
+
+      .instructions_title {
+        font-family: Verdana, Geneva, Tahoma, "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+        font-size: 30px;
+        text-align: left;
+        font-weight: 400;
+        margin: 1%;
+        /*text-shadow: 1px 1px 2px #346da3; */
+      }   
+
+      .subtext {
+        padding-top: 2%;
+        display: block;
+        text-align: left;
+        font-size: 1.5em;
+        font-family: Verdana, Geneva, Tahoma, "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+      }
+
+      .papercard {
+        margin-top: 30px;
+        border-radius: 20px;
+      }
+
+      .onboarding_gif {
+        width:40%;
+        margin-top: 2%;
+      }
+
+      .nudge_fade_image {
+        margin-top: 2%;
+        width: 15%;
+      }
+      .browser_notif_image {
+        margin-top: 5%;
+        width: 50%;
+      }
+      .button_survey_image {
+        margin-top: 5%;
+        width: 50%;
+      }
+      .nudge_notif_image {
+        margin-top: 2%;
+        width: 15%;
+      }
+      .notif_banner_gif {
+        margin: 2%;
+        width: 30%
+      }
+      .notif_mac_gif {
+        width: 25%
+      }
+      .verticalLine {
+        border-right: solid white;
+      }
+      .half::-webkit-scrollbar {
+        display: none;
+      }
+
+      .row {
+          display: flex;
+          padding-top: 1%;
+        }
+
+      .column {
+          float: left;
+          padding: 1%;
+          height: 600px
+        }
+
+        .left {
+          width: 22%;
+          padding-top: 2%;
+          padding: 1%;
+          margin: auto;
+          border-right: 2px solid white;
+          align-items: center;
+          text-align: left;
+        }
+
+        .right {
+          width: 70%;
+          padding-top: 2%;
+        }
+        .panel_content_left {
+          padding-top: 10%;
+          padding: 2%;
+          margin: auto;
+          align-items: center;
+          text-align: left;
+        }
+
+          .right-side{
+          right:0;
+          padding-right: 00%;
+          align-items: flex-start;
+        }
+
+        .left-side{
+          left: 0;
+          padding-left: 0%;
+        }
+
+      .half {
+        height: 50%;
+        width: 30%;
+        justify-content: space-between;
+        position: fixed;
+        margin-top: 10%;
+        overflow: scroll;
+        padding-left: 25%;
+        text-align: left;
+        vertical-align: auto;
+        align-items: flex-start;
+      }
+
+        .panel_content_right {
+          padding-top: 0%;
+          align-items: flex-start;
+        }
+
+
+        .icon_image{
+        }
+
+    </style>
+
+
+  <div class="row">
+    <div class="column left">
+      <div class="panel_content_left">
+        <img class="icon_image" src="icons/Unstuck_icons/num_icon_4.svg"/>
+        <div class="title">Enable Chrome Notifications for Unstuck to remind you of surveys.</div>
+        <div class="subtext"> These will appear at random during the day and repeat until you complete them. Click them to answer the survey questions.</div>
+
+      </div>
+    </div>
+    
+    <div class="column right">
+      <div class="panel_content_right">
+        <!--
+        <div class="title">Windows</div>
+        <div class="subtext">Windows: Click Start -> Settings -> System -> Notifications & actions<br> Find Google and set the toggle to "On" and select Alerts</div>
+        <img class="notif_mac_gif" src="icons/Unstuck_icons/Unstuck_enable_notifs_mac.gif">
+        -->
+        <img class="notif_mac_gif" src="icons/Unstuck_icons/Unstuck_notif_banner.gif">
+
+        <div class="subtitle">MacOS</div>
+        <div class="subtext"> - Go to System Settings > Notifications > Scroll to Google Chrome <br> - Toggle “Allow Notifications” to "On" and click “Alerts”</div>
+
+        <div class="subtitle">Windows</div>
+        <div class="subtext"> - Click Start > Settings > System > Notifications<br> - Make sure Notifications are On <br> - Scroll to Google Chrome (not Google Chrome Helper (Alerts)!)<br> - Set the toggle to "On" and select "Alerts"</div>
+
+
+      </div>
+    </div>
+  </div>
+
+
+  </template>
+  <script src="onboarding-notifications.js"></script>
+</dom-module>

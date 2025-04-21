@@ -1,0 +1,78 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/paper-checkbox/paper-checkbox.html">
+<link rel="import" href="../bower_components/paper-dialog/paper-dialog.html">
+
+<dom-module id="irb-dialog">
+  <template>
+    <style>
+      .card-content {
+        font-size: 24px;
+        height: 80%;
+        text-align: center;
+      }
+
+      .checkbox_span {
+        color: black;
+        text-align: center;
+        font-family: Verdana, Geneva, Tahoma, "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+      }
+    </style>
+
+    <paper-dialog id="irb_dialog" with-backdrop modal style="text-align: center; width: 70%; height: 60%; z-index: 9007199254740991; overflow-y: scroll">
+      <div class="subtext"><b>Please read and agree to our terms of service</b></div>
+      <!--<div class="subtext">By using Home Sweet, you are agreeing to the <a href = "https://github.com/habitlab/habitlab/wiki/Privacy#stanford-irb" target= "_blank" style = "color:white; text-decoration: underline;padding-bottom:10px;">terms of service</a>.</div>-->
+
+      <div>
+        <div style="width: 100%; height: 100%;text-align: center">
+          <div id="irb_text" style="text-align: left; display: inline-block;height: 80%; margin-top: 15px; font-size: 12px; width: 85%;background-color:rgba(250,250,250,0.6); color:rgba(75,84,92,95);padding:5px;padding-top:10px; padding-bottom:10px; border-radius: 5px;overflow-x: hidden;">
+
+            <b>Unstuck</b> is a research project run by the <a href="http://www.tri.global" target="_blank" style="color: rgb(81, 167, 249);">Toyota Research Institute (TRI)</a>
+            <br><br>
+
+            <b>Description</b>: Unstuck is a research study on managing stress online. You can participate by installing and using the Unstuck Chrome extension. 
+            The extension will ask you to define stressful websites, and will serve just-in-time mini-interventions that aim to help you manage your creativity.
+            It will log anonymized data related to progress (such as how effective the intervention has been), which will be used by our algorithms to determine 
+            which interventions work for you. Data will not be shared with anyone outside our research team. We will collect data of your typing speed but not the
+             letters you press, as well as mouse/trackpad clicking and scrolling speed, but not the icons where you press. We will also collect the high level categories
+              of websites that you visit (news, sports, etc.) but not the actual URL addresses.
+
+            <paper-checkbox checked="{{allow_logging}}" style="display: none">
+              <br><br>
+              <span class="checkbox_span"><b>Let Unstuck send anonymized data to TRI's servers<br>(we need this data to help us build Unstuck! <a href="https://github.com/habitlab/habitlab/wiki/Privacy" target="_blank" style="color: rgb(81, 167, 249);" on-click="see_what_gets_logged_clicked">see what gets logged</a> )</b></span>
+              <br><br>
+            </paper-checkbox>
+            
+            <br><br>
+            <b>Time Involvement</b>: You need to participate filling information before and after the study, and after that we ask you to participate for a minimum of 4 weeks, and you can keep the plugin installed afterwards.
+            <br><br>
+            <b>Risks and Benefits</b>: There are no forseeable risks associated with using Unstuck. We cannot and do not
+            guarantee or promise that you will receive any benefits from using Unstuck.
+            <br><br>
+            <b>Subject's Rights</b>: If you have read this form and have decided to participate in this project, please understand
+            your participation is voluntary and you have the right to withdraw your consent or discontinue participation
+            at any time without penalty or loss of benefits to which you are otherwise entitled. The alternative is not to
+            participate. You have the right to uninstall our extension at any time. Your individual privacy will be maintained
+            in all published and written data resulting from the study.
+            <br><br>
+            <b>Contact Information</b>: If you have any questions, concerns or complaints about this research, its procedures,
+            risks and benefits, contact the Protocol Director, <a style="color: rgb(81, 167, 249)" href="mailto:{{pablo_meoaddr}}" target="_blank">{{pablo_meoaddr}}</a>
+            <br><br>
+          </div>
+        </div>
+
+        <br>
+        <div class="checkbox_div_outer" style="padding-top:10px;padding-bottom:20px;">
+          <div class="checkbox_div">
+            <paper-button style="background-color: green; color: white" on-click="accept_clicked">Agree</paper-button>
+            <!-- <paper-checkbox checked="checked" disabled="disabled">
+              <span class="checkbox_span">By using Home Sweet, I agree with the <a href="https://github.com/habitlab/habitlab/wiki/Privacy#stanford-irb" target="_blank" style="color: white; text-decoration: underline;" on-click="see_what_gets_loggged_clicked">terms of service.</a></span>
+            </paper-checkbox> -->
+          </div>
+        </div>
+      </div>
+      <br>
+    </paper-dialog>
+
+  </template>
+  <script src="irb-dialog.js"></script>
+</dom-module>
